@@ -3,13 +3,33 @@
     --bg-glow: #B3200F;
     --card: #F8F6F2;
     --ink: #1f1a17;
-    --held: #59E391;
+    --held: #EF0107;
     --accent: #5035FF;
     --accent-dark: #3a24d6;
 }
 
 * {
     box-sizing: border-box;
+}
+
+.title {
+    margin: 0 0 8px;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #171716, #323232);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.instructions {
+    margin: 0 0 26px;
+    max-width: 300px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #6b625c;
+    text-align: center;
 }
 
 body {
@@ -131,8 +151,8 @@ h1, .title {
 .dice-container button.held {
     background-color: var(--held);
     box-shadow:
-        0 4px 0 #3bb86f,
-        0 8px 14px rgba(59, 184, 111, 0.35),
+        0 4px 0 #EF0107,
+        0 8px 14px rgba(40, 1, 1, 0.35),
         inset 0 2px 0 rgba(255, 255, 255, 0.5);
 }
 
@@ -206,7 +226,7 @@ h1, .title {
 }
 
 .roll-dice {
-    --c1: #ffb347;   /* light */
+    --c1: #58111A;   /* light */
     --c2: #ff7a00;   /* main */
     --edge: #b85400; /* bottom edge */
     --glow: rgba(255, 122, 0, 0.45);
@@ -265,4 +285,39 @@ h1, .title {
 .roll-dice:focus-visible {
     outline: 3px solid #fff;
     outline-offset: 3px;
+}
+
+.dice-container button.held {
+    background-color: var(--held);
+    box-shadow:
+        0 4px 0 #EF0107,
+        0 8px 14px rgba(20, 1, 4, 0.35),
+        inset 0 2px 0 rgba(46, 7, 7, 0.5);
+}
+
+/* little "locked" dot in the corner */
+.dice-container button.held::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #06361d;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.dice-container button.held:hover {
+    transform: translateY(-5px) rotate(-3deg) scale(1.06);
+}
+
+.dice-container button.held:active {
+    transform: translateY(2px) scale(0.97);
+}
+
+@keyframes hold-pop {
+    0%   { transform: scale(1); }
+    50%  { transform: translateY(-6px) scale(1.15); }
+    100% { transform: translateY(-2px) scale(1); }
 }
